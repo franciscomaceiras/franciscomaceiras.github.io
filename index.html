@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Francisco Maceiras</title>
+<meta name="description" content="Francisco Maceiras — Estudiante de Arquitectura.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@600&family=Reenie+Beanie&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #161616;
+    --paper: #EDEDEA;
+    --ink: #121212;
+    --muted: #6A6964;
+    --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+    --sans: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --hand: "Reenie Beanie", "Segoe Print", cursive;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 16px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1.45;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .face {
+    background: var(--paper);
+    padding: clamp(22px, 3.2vw, 40px);
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  /* ---------- Cara de datos ---------- */
+  .data {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 40px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 7.5ch 1fr;
+    column-gap: 2ch;
+  }
+  .row + .row { margin-top: 2px; }
+  .k { color: var(--ink); }
+  .v { color: var(--ink); }
+  .v small { display: block; font-size: 12px; color: var(--muted); text-transform: none; line-height: 1.4; margin-top: 2px; }
+
+  .achievements { align-self: center; }
+  .achievements .row + .row { margin-top: 16px; }
+
+  .contact a {
+    color: var(--ink);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size .25s;
+  }
+  .contact a:hover { background-size: 100% 1px; }
+  .contact a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .contact .email { text-transform: none; }
+
+  /* ---------- Cara de marca ---------- */
+  .brand {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  .brand .meta { display: flex; justify-content: space-between; gap: 16px; }
+  .wordmark {
+    font-family: var(--sans);
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: -.06em;
+    line-height: .8;
+    white-space: nowrap;
+    font-size: 120px;   /* se ajusta con JS */
+    margin-left: -.04em;
+    min-width: 0;
+  }
+
+  /* Escrito a mano, encima de todo, como en la tarjeta "Text me!" */
+  .scrawl {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -50%) rotate(-6deg);
+    font-family: var(--hand);
+    text-transform: none;
+    font-size: clamp(54px, 7.5vw, 96px);
+    line-height: .8;
+    color: #1B1B1B;
+    text-decoration: none;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .scrawl span { display: block; font-size: .62em; margin-top: .1em; }
+  .scrawl:hover { color: #000; }
+  .scrawl:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
+
+  @media (max-width: 820px) {
+    body { grid-template-columns: 1fr; }
+    .brand { min-height: 56vh; }
+    .brand { order: -1; }
+    .data { gap: 32px; }
+    body { font-size: 13px; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .face { animation: in .7s cubic-bezier(.2, .7, .1, 1) both; }
+    .face + .face { animation-delay: .12s; }
+    .scrawl { animation: draw 1s .6s ease-out both; }
+    @keyframes in { from { opacity: 0; transform: translateY(16px); } }
+    @keyframes draw { from { opacity: 0; clip-path: inset(0 100% 0 0); } to { opacity: 1; clip-path: inset(0 0 0 0); } }
+  }
+</style>
+</head>
+<body>
+  <section class="face data">
+    <div>
+      <div class="row"><span class="k">F.MAC</span><span class="v">Francisco Maceiras<br>Estudiante de Arquitectura</span></div>
+    </div>
+
+    <ol class="achievements" aria-label="Logros" style="list-style:none">
+      <li class="row"><span class="k">L.01</span><span class="v">Beca 100 % — colegio bilingüe de primer nivel<small>Casi dos años de admisión, con dos veranos de estudio (2019 y 2020).</small></span></li>
+      <li class="row"><span class="k">L.02</span><span class="v">Líder en campamentos para adolescentes<small>Equipo de cocina de 7 personas y grupo de 8 chicos de 12 a 14 años.</small></span></li>
+      <li class="row"><span class="k">L.03</span><span class="v">Identidad visual — EcoTecnoBabar<small>Evento escolar sobre tecnología y medio ambiente.</small></span></li>
+    </ol>
+
+    <div class="contact" aria-label="Contacto">
+      <div class="row"><span class="k">E:</span><span class="v"><a class="email" href="mailto:franciscogmaceiras@gmail.com">franciscogmaceiras@gmail.com</a></span></div>
+      <div class="row"><span class="k">IN:</span><span class="v"><a href="https://www.linkedin.com/in/francisco-maceiras-4894b8379/" target="_blank" rel="noopener">/francisco-maceiras</a></span></div>
+    </div>
+  </section>
+
+  <section class="face brand">
+    <div class="meta"><span>Arquitectura</span><span>2026</span></div>
+    <a class="scrawl" href="mailto:franciscogmaceiras@gmail.com">¡Escribime!</a>
+    <div></div>
+    <h1 class="wordmark" aria-label="Francisco Maceiras"><span>f.maceiras</span></h1>
+  </section>
+
+<script>
+  // Ajusta el nombre para que ocupe todo el ancho de la cara
+  const mark = document.querySelector('.wordmark');
+  const word = mark.firstElementChild;
+  word.style.display = 'inline-block';
+  function fit() {
+    mark.style.fontSize = '100px';
+    mark.style.fontSize = (100 * mark.clientWidth / word.getBoundingClientRect().width) + 'px';
+  }
+  document.fonts.ready.then(fit);
+  addEventListener('resize', fit);
+  fit();
+</script>
+</body>
+</html>
